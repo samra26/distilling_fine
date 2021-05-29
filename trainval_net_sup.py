@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import os
 ##pytorch 1
-import __init_paths
+import _init_paths
 import sys
 import torch.optim as optim #may not be added
 
