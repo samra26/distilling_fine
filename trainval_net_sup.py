@@ -396,7 +396,7 @@ if __name__ == '__main__':
             if step < args.warm_step and epoch == 1:
                 loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
                        + RCNN_loss_cls.mean() + RCNN_loss_bbox.mean()
-                loss_temp += loss.data[0]
+                loss_temp += loss.data
                 sup_loss = sup_loss * 0
                 loss += sup_loss
             else:
@@ -437,7 +437,7 @@ if __name__ == '__main__':
                     loss_rpn_box = rpn_loss_box.data[0]
                     loss_rcnn_cls = RCNN_loss_cls.data[0]
                     loss_rcnn_box = RCNN_loss_bbox.data[0]
-                    loss_sup = sup_loss.data[0]
+                    loss_sup = sup_loss.data
                     fg_cnt = torch.sum(rois_label.data.ne(0))
                     bg_cnt = rois_label.data.numel() - fg_cnt
 
