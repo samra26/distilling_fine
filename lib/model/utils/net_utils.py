@@ -44,7 +44,7 @@ def clip_gradient(model, clip_norm):
         if p.requires_grad and p.grad is not None:
             modulenorm = p.grad.data.norm()
             totalnorm += modulenorm ** 2
-    totalnorm = np.sqrt(totalnorm).cuda()
+    totalnorm =torch.sqrt(totalnorm).item()
 
     norm = clip_norm / max(totalnorm, clip_norm)
     for p in model.parameters():
